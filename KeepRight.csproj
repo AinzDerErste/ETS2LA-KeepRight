@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>KeepRight</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Folder with the ETS2LA assemblies to compile against (a built ETS2LA, e.g. its bin/Debug/net10.0 or install folder).
+         Override with: dotnet build -p:ETS2LABin=/path/to/ETS2LA/bin -->
+    <ETS2LABin Condition="'$(ETS2LABin)' == ''">$(HOME)/Develope/ETS2LA/ETS2LA/bin/Debug/net10.0</ETS2LABin>
+    <!-- PathLib is a plugin library, installed next to the plugins. -->
+    <PathLibDir Condition="'$(PathLibDir)' == ''">$(HOME)/.local/share/ETS2LA/Libraries/tumppi066.pathlib</PathLibDir>
+  </PropertyGroup>
+  <!-- Compile-time only. At runtime ETS2LA provides these (Private=false = not copied next to the plugin). -->
+  <ItemGroup>
+    <Reference Include="ETS2LA.Shared"><HintPath>$(ETS2LABin)/ETS2LA.Shared.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.Game"><HintPath>$(ETS2LABin)/ETS2LA.Game.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.Backend"><HintPath>$(ETS2LABin)/ETS2LA.Backend.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.State"><HintPath>$(ETS2LABin)/ETS2LA.State.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.Logging"><HintPath>$(ETS2LABin)/ETS2LA.Logging.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.Translations"><HintPath>$(ETS2LABin)/ETS2LA.Translations.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ETS2LA.Overlay"><HintPath>$(ETS2LABin)/ETS2LA.Overlay.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Hexa.NET.ImGui"><HintPath>$(ETS2LABin)/Hexa.NET.ImGui.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TruckLib"><HintPath>$(ETS2LABin)/TruckLib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TruckLib.Core"><HintPath>$(ETS2LABin)/TruckLib.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TruckLib.Models"><HintPath>$(ETS2LABin)/TruckLib.Models.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="TruckLib.Sii"><HintPath>$(ETS2LABin)/TruckLib.Sii.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="PathLib"><HintPath>$(PathLibDir)/PathLib.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>
